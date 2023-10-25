@@ -1,9 +1,10 @@
+import 'dotenv/config';
 import axios from "axios";
 const defaultLocation = 'London';
 // Get current weather data for the default location
 export const getDefaultWeather = async () => {
     try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&appid=32305ac790ab5ac26f1400cf0129a930&units=metric`);
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&appid=${process.env.WEATHERAPI}&units=metric`);
 
         if(response.status === 200) {
             return response.data;
@@ -16,7 +17,7 @@ export const getDefaultWeather = async () => {
 // Get forcast weather 
 export const getDefaultForcast = async (defaultLocation) => {
     try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${defaultLocation}&appid=32305ac790ab5ac26f1400cf0129a930&units=metric`);
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${defaultLocation}&appid=${process.env.WEATHERAPI}&units=metric`);
 
         if (response.status === 200) {
             const forecastData = response.data;
@@ -52,7 +53,7 @@ export const getDefaultForcast = async (defaultLocation) => {
 // CUSTOMISE LOCATION
 export const customiseLocation = async(input) => {
     try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=32305ac790ab5ac26f1400cf0129a930&units=metric`);
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${process.env.WEATHERAPI}&units=metric`);
         if(response.status === 200) {
             return response.data;
         }
@@ -65,7 +66,7 @@ export const customiseLocation = async(input) => {
 // Get forcast weather 
 export const customiseForecastData = async (input) => {
     try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=32305ac790ab5ac26f1400cf0129a930&units=metric`);
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=${process.env.WEATHERAPI}&units=metric`);
 
         if (response.status === 200) {
             const forecastData = response.data;
