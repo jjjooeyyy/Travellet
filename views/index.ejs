@@ -1,0 +1,65 @@
+<%- include('../views/partials/header.ejs') %>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-5">
+
+        <div class="btn-toolbar mb-2 mb-md-0">
+
+             <!-- Select total amount -->
+<label>Amount in...</label>
+<select class="form-select form-select-sm" id="convertTo" name="currency" aria-label="select">
+  <% for (var i = 0; i < currencies.length; i++) { %>
+    <option value="<%= currencies[i].value %>"><%= currencies[i].name %></option>
+    <% } %>
+</select>
+  <canvas id="myChart" class="max-w-[400px] my-0 mx-auto mt-5"></canvas>
+
+   <!-- Currency Exchange -->
+   <div class="mt-10 w-full rounded-[var(--card-border-radius)] p-1/2 bg-[var(--color-white)]">
+    <div class="text-center p-[var(--card-padding)]">
+    <h2 class="font-bold">Currency Exchange</h2>
+    <div class="updates mt-5">
+      <div class="update">
+        <div class="from pt-3">
+          <label>Convert From</label>
+          <select class="form-select form-select-sm" id="country-from" name="country-from" required>
+            <% for (var i = 0; i < countries.length; i++) { %>
+            <option value="<%= countries[i].code %>"><%= countries[i].name %></option>
+            <% } %>
+          </select>
+          <img class="flag-from mx-auto">
+          <div class="mt-10 relative">
+            <input
+              type="number" min="0" id="amount-to-convert" required placeholder="Amount to Convert" class="text-center"/>
+          </div>
+        </div>
+        <span class="material-icons-sharp mt-5 mb-5">compare_arrows</span>
+        <div class="to">
+          <label>Convert To</label>
+          <select class="form-select form-select-sm" id="country-to" name="country-to" required>
+            <% for (var i = 0; i < countries.length; i++) { %>
+            <option value="<%= countries[i].code %>"><%= countries[i].name %></option>
+            <% } %>
+          </select>
+          <img class="flag-to mx-auto">
+          <div class="amount-output-container mt-5"><span id="amount-output" class="text-center text-lg"></span></div>
+        </div>
+        <button type="submit" class="btn btn-primary input-btn">Convert
+        </button>
+      
+      </div>
+  </div>
+
+        </div>
+      </div>
+
+    </main>
+  
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/chart.js"></script>
+<script type="module" src="/js/currency.js"></script>
+
+</body>
+</html>
