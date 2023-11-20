@@ -1,5 +1,9 @@
-import 'dotenv/config';
-import axios from "axios";
+// Loading environment variables
+require('dotenv').config();
+
+// Requiring axios
+const axios = require('axios');
+
 const defaultLocation = 'London';
 // Get current weather data for the default location
 export const getDefaultWeather = async () => {

@@ -1,8 +1,13 @@
-import 'dotenv/config';
-import express from 'express';
-import bodyParser from 'body-parser';
-import { countries, currencies } from './public/js/data.js';
-import { getDefaultWeather, getDefaultForcast, customiseLocation, customiseForecastData } from './public/js/weather.js';
+require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const { countries, currencies } = require('./public/js/data.js');
+const {
+  getDefaultWeather,
+  getDefaultForcast,
+  customiseLocation,
+  customiseForecastData,
+} = require('./public/js/weather.js');
 
 const path = require('path'); // Added 'path' module
 const app = express();
