@@ -4,15 +4,22 @@ import bodyParser from 'body-parser';
 import { countries, currencies } from './public/js/data.js';
 import { getDefaultWeather, getDefaultForcast, customiseLocation, customiseForecastData } from './public/js/weather.js';
 
+const path = require('path'); // Added 'path' module
 const app = express();
 const port = 3000;
 
 app.use(express.static('public'));
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false })); // Parse URL-encoded data
 app.use(bodyParser.json()); // Parse JSON data
+
+app.set('layout', 'layouts/main'); // Adjusted path to the layout file
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 
 app.get('/',(req,res)=> {
