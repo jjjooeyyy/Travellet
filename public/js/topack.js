@@ -23,6 +23,7 @@ submitBtn.addEventListener('click', (event) => {
     // which include also include checked status
     // 0: {name: 'food', checked: true} 1: {name: 'ipad', checked: false} 
     savedItems.push(newItem);
+    console.log(savedItems);
     updateLocalStorage();
     displayItems();
     userInput.value = '';
@@ -118,12 +119,12 @@ itemContainer.addEventListener('click', (event) => {
 // TICK OFF ITEM
 itemContainer.addEventListener('click', (event) => {
   // see when you clicking the ele that include a class "checkbox" = clicking the checkbox
-  if (event.target.classList.contains('checkbox')) {
+  if (event.target.classList.contains('form-check-input')) {
      // target the row that the checkbox located in
     const tr = event.target.closest('tr');
     // the item on that row
     const span = tr.querySelector('.label-text');
-    const checkBox = tr.querySelector('.checkbox');
+    const checkBox = event.target;
     const editBtn = tr.querySelector('.edit-btn');
     
     // find() is a an array method that return the first ele in the array that satisfy the things in inside the () 
