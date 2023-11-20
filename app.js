@@ -1,31 +1,34 @@
-require('dotenv').config();
-const express = require('express');
-const axios = require('axios');
-const bodyParser = require('body-parser');
-const { countries, currencies } = require('./public/js/data.js');
-const {
+import 'dotenv/config';
+import express from 'express';
+import bodyParser from 'body-parser';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { countries, currencies } from './public/js/data.js';
+import {
   getDefaultWeather,
   getDefaultForcast,
   customiseLocation,
   customiseForecastData,
-} = require('./public/js/weather.js');
+} from './public/js/weather.js';
 
-const path = require('path'); // Added 'path' module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const app = express();
 const port = 3000;
 
 app.use(express.static('public'));
 // Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(join(__dirname, 'public')));
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false })); // Parse URL-encoded data
 app.use(bodyParser.json()); // Parse JSON data
 
 app.set('layout', 'layouts/main'); // Adjusted path to the layout file
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', join(__dirname, 'views'));
 
 
 app.get('/',(req,res)=> {

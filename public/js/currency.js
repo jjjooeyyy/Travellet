@@ -1,5 +1,6 @@
 /*jshint esversion: 6 */ 
-const countryToCurrency = require('country-to-currency');
+import countryToCurrency from "https://unpkg.com/country-to-currency/index.esm.js";
+
 
 
 /* 
