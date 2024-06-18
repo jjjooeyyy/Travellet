@@ -8,7 +8,7 @@ To record your travel expenditure, your packing list, currencies converison and 
 
 ## Demo
 
-🔗 It's deployed on https://travellet.onrender.com/ 
+🔗 It's deployed on [https://travellet-1.vercel.app/ ]
 
 
 ## Tech Stack
